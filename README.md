@@ -34,7 +34,7 @@ tools are used for running unit tests and code quality checks on each commit. Th
 The first thing to do is to clone the repository:
 
 ```sh
-$ git clone https://github.com/marouane-youssfi10/restaurant-api.git
+$ git clone https://github.com/vvek475/Shop-Now.git
 $ cd Shop-Now
 ```
 
