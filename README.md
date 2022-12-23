@@ -1,5 +1,5 @@
 # Shop Now API's
-A Detailed Shopping API built with Django, SMTP, Celery, Razorpay, RabbitMQ, Django Rest Framework and more...
+A Detailed Shopping API built with Django, Postgres, SMTP, Celery, Razorpay,RabbitMQ, Redis , Django Rest Framework and more...
 
 ![Green Neon Hacking Tutorials YouTube Thumbnail](https://user-images.githubusercontent.com/74411397/194757348-e8d84a9a-05d3-4830-97e7-ea1b3b35f5b0.png)
 
