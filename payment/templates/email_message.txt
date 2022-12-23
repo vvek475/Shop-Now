@@ -1,0 +1,5 @@
+Hello {{name | safe}}
+Your order for total M.R.P {{total | safe}} has been placed
+{{review | safe}}
+
+Thank You!
