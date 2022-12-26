@@ -1,8 +1,6 @@
 # Shop Now API's
 A Detailed Shopping API built with Django, Postgres, SMTP, Celery, Razorpay,RabbitMQ, Redis , Django Rest Framework and more...
 
-![Green Neon Hacking Tutorials YouTube Thumbnail](https://user-images.githubusercontent.com/74411397/194757348-e8d84a9a-05d3-4830-97e7-ea1b3b35f5b0.png)
-
 
 ### Implementation
 - Django REST Framework function-based views
@@ -22,12 +20,6 @@ This application follows PEP8 rules for styling and code readability.
 ### Developing with virtual environments
 
 The application can be developed with a virtual environment locally. This requires starting RabbitMQ services locally.
-
-
-### Continuous Intergration
-
-tools are used for running unit tests and code quality checks on each commit. These include:
-
 
 ### Setup Project
 
