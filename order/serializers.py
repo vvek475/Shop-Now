@@ -7,19 +7,32 @@ from product.models import Product
 
 # app directory
 from . models import Order,Kart
+class KartSerializer(serializers.ModelSerializer):
+    
+    products_list=ProductSerializer(source='products',many=True,read_only=True)
+    products=serializers.PrimaryKeyRelatedField(allow_empty=False, many=True,write_only=True,queryset=Product.objects.all())
+    
+    class Meta:
+        
+        model=Kart
+        fields=['products','products_list']
 
 class OrderSerializer(serializers.ModelSerializer):
     
-    products=serializers.PrimaryKeyRelatedField(allow_empty=False,write_only=True ,many=True,queryset=Product.objects.all())
+    # read only
     products_list=ProductSerializer(source='products',many=True,read_only=True)
     email=serializers.EmailField(read_only=True)
     total=serializers.IntegerField(read_only=True)
     isactive=serializers.BooleanField(read_only=True)
+    discount=serializers.SerializerMethodField(read_only=True)
+    
+    # write only
+    products=serializers.PrimaryKeyRelatedField(allow_empty=False,write_only=True ,many=True,queryset=Product.objects.all())
     
     class Meta:
         
         model=Order
-        fields=['products','total','isactive','email','date','products_list']
+        fields=['products','total','isactive','email','date','products_list','discount']
         
     def create(self, validated_data):
         
@@ -40,7 +53,7 @@ class OrderSerializer(serializers.ModelSerializer):
         [total.append(int(i['discounted_price'])) for i in user_order.data]
         validated_data['total']=sum(total)
         validated_data['user']=user
-        validated_data['email']=user
+        validated_data['email']=user.email
         validated_data['isactive']=True
         validated_data['discount']=self.get_discount(validated_data)
         
@@ -67,18 +80,10 @@ class OrderSerializer(serializers.ModelSerializer):
     def get_discount(self,dictionary):
         
         discount=[]
-        products=[i for i in dictionary['products']]
-        [discount.extend(i.discount_set.all()) for i in products]
+        try:
+            products=[i for i in dictionary['products']]
+        except TypeError:
+            products=[i for i in dictionary.products.all()]
+        [discount.extend(i.discount.all()) for i in products]
         
         return list(set(discount))
-    
-    
-class KartSerializer(serializers.ModelSerializer):
-    
-    products_list=ProductSerializer(source='products',many=True,read_only=True)
-    products=serializers.PrimaryKeyRelatedField(allow_empty=False, many=True,write_only=True,queryset=Product.objects.all())
-    
-    class Meta:
-        
-        model=Kart
-        fields=['products','products_list']

@@ -136,3 +136,7 @@ class Refund(GenericViewSet):
                 return Response({'message':'Your purchase period has exceeded the guarantee limit'})
             
         return Response({'message':'Please pass a valid reciept Id and product Id'})
+
+payment = paymentView.as_view({'get':'payment'})
+payment_handler = payment_handler
+refund = Refund.as_view({'post':'refund'})

@@ -90,7 +90,14 @@ WSGI_APPLICATION = 'shop_now.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
+TEST_DB = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+PRODUCTION_DB = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': env('DB_NAME'),
@@ -100,6 +107,8 @@ DATABASES = {
         'PORT': '',
     }
 }
+DATABASES = TEST_DB if env('DEBUG') else PRODUCTION_DB
+
 
 
 # Password validation

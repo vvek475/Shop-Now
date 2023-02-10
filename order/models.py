@@ -23,7 +23,7 @@ class Order(models.Model):
     
 class Kart(models.Model):
     
-    user=models.OneToOneField(User,on_delete=models.CASCADE)
+    user=models.OneToOneField(User,on_delete=models.CASCADE,related_name='kart')
     products=models.ManyToManyField(Product)
     
     def __str__(self):

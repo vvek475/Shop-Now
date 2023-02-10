@@ -5,8 +5,7 @@ from django.urls import path
 from .views import *
 
 urlpatterns=[
-    path('',OrderView.as_view({'get':'list','post':'create','put':'update'})), 
-    path('kart',KartView.as_view({'post':'update_products','put':'remove_products'})),
-    path('checkout',KartView.as_view({'get':'checkout'})),
-
+    path('', order_view, name='order_list_create_update'), 
+    path('kart', kart_view, name='kart_get_post_put'),
+    path('checkout', checkout_view, name='kart_checkout'),
 ]
