@@ -1,6 +1,11 @@
 # Shop Now API's
-A Detailed Shopping API built with Django, Postgres, SMTP, Celery, Razorpay,RabbitMQ, Redis , Django Rest Framework and more...
-
+Built a scalable e-commerce platform using Django and Django Rest Framework.
+Enabled sellers to add products and manage discounts on specific product groups.
+Developed a user-friendly interface for customers to add items to their cart, make purchases, and track their orders.
+Integrated secure payment transactions using Razorpay.
+Automated the delivery process by using Celery to change the order status to "delivered" once the delivery time has been reached.
+Provided a solution for refunding the amount to the customer in case of returns within the guarantee period.
+Followed test driven development, by using Unit testing to test.
 
 ### Implementation
 - Django REST Framework function-based views
